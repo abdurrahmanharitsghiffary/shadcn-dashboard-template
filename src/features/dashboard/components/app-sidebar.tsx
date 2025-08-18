@@ -189,8 +189,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <div className="flex flex-col">
           {open && (
-            <div className="p-4 flex flex-col gap-4">
-              <span className="text-xl font-bold">MTR Developer Platform</span>
+            <div className="p-2 flex flex-col gap-4">
+              <span className="text-2xl font-bold">MTR Developer Platform</span>
               <div className="flex gap-1 flex-col">
                 <span className="font-semibold">Toko Crypto</span>
                 <span className="text-xs text-muted-foreground">

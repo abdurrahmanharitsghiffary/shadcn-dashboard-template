@@ -27,13 +27,14 @@ export default function PageContent() {
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              <div className="px-6 flex gap-2 items-center">
+              <h1 className="text-4xl font-bold mx-4 lg:mx-6">Overview</h1>
+              <div className="px-4 lg:px-6 flex gap-2 items-center">
                 <DateFilter />
                 <Button>Filter</Button>
               </div>
               <SectionCards />
               <div className="px-4 lg:px-6 flex flex-col gap-6">
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-col lg:flex-row">
                   <PieChartDemo />
                   <ChartBarMultiple />
                 </div>
