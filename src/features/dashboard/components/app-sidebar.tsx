@@ -2,32 +2,21 @@
 
 import * as React from 'react';
 import {
-  AudioWaveform,
   Bitcoin,
   BookOpen,
   Bot,
-  Command,
   Frame,
-  GalleryVerticalEnd,
-  Group,
   Home,
-  Inbox,
   Map,
   PieChart,
-  Radio,
-  Search,
   Settings,
   Settings2,
-  Sparkles,
   SquareTerminal,
   User,
   Users,
 } from 'lucide-react';
 
-import { NavMain } from '@/features/dashboard/components/nav-main';
-import { NavProjects } from '@/features/dashboard/components/nav-projects';
 import { NavUser } from '@/features/dashboard/components/nav-user';
-import { TeamSwitcher } from '@/features/dashboard/components/team-switcher';
 import {
   Sidebar,
   SidebarContent,
@@ -36,9 +25,9 @@ import {
   SidebarRail,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { IconSandbox } from '@tabler/icons-react';
 import { EnvironmentSwitcher } from './environment-switcher';
 import { NavPlain } from './nav-plain';
+import { usePathname } from 'next/navigation';
 
 // This is sample data.
 const data = {
@@ -50,28 +39,27 @@ const data = {
   navPlain: [
     {
       title: 'Dashboard',
-      url: '#',
+      url: '/dashboard',
       icon: Home,
-      isActive: true,
     },
     {
       title: 'Transactions',
-      url: '#',
+      url: '/transactions',
       icon: Bitcoin,
     },
     {
       title: 'Manage Users',
-      url: '#',
+      url: '/users',
       icon: Users,
     },
     {
       title: 'Custody',
-      url: '#',
+      url: '/custody',
       icon: User,
     },
     {
       title: 'Settings',
-      url: '#',
+      url: '/dashboard/settings',
       icon: Settings,
     },
   ],
@@ -183,6 +171,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { open } = useSidebar();
+  const pathname = usePathname();
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -204,7 +193,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavPlain items={data.navPlain} />
+        <NavPlain pathname={pathname} items={data.navPlain} />
         {/* <NavMain items={data.navMain} /> */}
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>

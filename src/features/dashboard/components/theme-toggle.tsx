@@ -8,9 +8,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useIsMounted } from '@/hooks/use-is-mounted';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
+  const isMounted = useIsMounted();
+
+  if (!isMounted) return null;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -20,11 +25,8 @@ export function ThemeToggle() {
           aria-label="Toggle theme"
           className="p-2 rounded-sm hover:bg-accent"
         >
-          {theme === 'dark' ? (
-            <Moon className="w-5 h-5" />
-          ) : (
-            <Sun className="w-5 h-5" />
-          )}
+          <Moon className="w-5 h-5 hidden dark:block" />
+          <Sun className="w-5 h-5 block dark:hidden" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

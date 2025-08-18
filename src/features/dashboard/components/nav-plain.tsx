@@ -2,6 +2,8 @@
 
 import { type LucideIcon } from 'lucide-react';
 
+import Link from 'next/link';
+
 import {
   SidebarGroup,
   SidebarMenu,
@@ -11,7 +13,9 @@ import {
 
 export function NavPlain({
   items,
+  pathname,
 }: {
+  pathname?: string;
   items: {
     title: string;
     url: string;
@@ -22,16 +26,20 @@ export function NavPlain({
   return (
     <SidebarGroup>
       <SidebarMenu>
-        {items.map((item) => (
-          <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton asChild isActive={item.isActive}>
-              <a href={item.url}>
-                <item.icon />
-                <span>{item.title}</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
+        {items.map((item) => {
+          const isActive = pathname === item.url;
+
+          return (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton asChild isActive={isActive}>
+                <Link href={item.url}>
+                  <item.icon />
+                  <span>{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );
