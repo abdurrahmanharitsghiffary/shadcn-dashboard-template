@@ -18,7 +18,7 @@ export function ThemeToggle() {
           variant="ghost"
           size="icon"
           aria-label="Toggle theme"
-          className="p-2 rounded-full hover:bg-accent"
+          className="p-2 rounded-sm hover:bg-accent"
         >
           {theme === 'dark' ? (
             <Moon className="w-5 h-5" />

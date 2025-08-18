@@ -1,9 +1,9 @@
 import '@/styles/globals.css';
 import { Providers } from './providers';
-import { Inter } from 'next/font/google';
+import { Host_Grotesk } from 'next/font/google';
 import type { Metadata } from 'next';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Host_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Dashboard',

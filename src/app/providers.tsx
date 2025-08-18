@@ -1,6 +1,5 @@
 'use client';
 import { KBarProvider } from 'kbar';
-import { CommandMenu } from '@/components/ui/command-menu';
 import * as React from 'react';
 import { NuqsAdapter } from 'nuqs/adapters/next';
 import { ThemeProvider } from '@/components/ui/theme-provider';

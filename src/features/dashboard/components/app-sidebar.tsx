@@ -3,15 +3,25 @@
 import * as React from 'react';
 import {
   AudioWaveform,
+  Bitcoin,
   BookOpen,
   Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
+  Group,
+  Home,
+  Inbox,
   Map,
   PieChart,
+  Radio,
+  Search,
+  Settings,
   Settings2,
+  Sparkles,
   SquareTerminal,
+  User,
+  Users,
 } from 'lucide-react';
 
 import { NavMain } from '@/features/dashboard/components/nav-main';
@@ -24,7 +34,11 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from '@/components/ui/sidebar';
+import { IconSandbox } from '@tabler/icons-react';
+import { EnvironmentSwitcher } from './environment-switcher';
+import { NavPlain } from './nav-plain';
 
 // This is sample data.
 const data = {
@@ -33,21 +47,32 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  teams: [
+  navPlain: [
     {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      title: 'Dashboard',
+      url: '#',
+      icon: Home,
+      isActive: true,
     },
     {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
+      title: 'Transactions',
+      url: '#',
+      icon: Bitcoin,
     },
     {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
+      title: 'Manage Users',
+      url: '#',
+      icon: Users,
+    },
+    {
+      title: 'Custody',
+      url: '#',
+      icon: User,
+    },
+    {
+      title: 'Settings',
+      url: '#',
+      icon: Settings,
     },
   ],
   navMain: [
@@ -157,14 +182,31 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { open } = useSidebar();
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <div className="flex flex-col">
+          {open && (
+            <div className="p-4 flex flex-col gap-4">
+              <span className="text-xl font-bold">MTR Developer Platform</span>
+              <div className="flex gap-1 flex-col">
+                <span className="font-semibold">Toko Crypto</span>
+                <span className="text-xs text-muted-foreground">
+                  admin@gmail.com
+                </span>
+              </div>
+            </div>
+          )}
+
+          <EnvironmentSwitcher />
+        </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavPlain items={data.navPlain} />
+        {/* <NavMain items={data.navMain} /> */}
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
